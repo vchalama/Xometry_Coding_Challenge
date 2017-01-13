@@ -1,5 +1,8 @@
 #This code calculates the volume of polyhedron with triangular facets. 
 
+To clone the repository into your local machine, type the following command in the terminal. 
+git clone https://github.com/vchalama/Xometry_coding_challenge.git
+
 * Numpy extension is required to run this code. 
 
 * Implementation -- polyhedron_mesh_volume.py has the implementation of all functions 
