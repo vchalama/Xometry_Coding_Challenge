@@ -7,7 +7,6 @@ works for both convex and concave polyhedrons.
 """
 ###############################################################################
 import numpy 
-
 ###############################################################################
 """Function to calculate volume"""
 def calculate_triangular_mesh_volume(file_name):
@@ -17,8 +16,6 @@ def calculate_triangular_mesh_volume(file_name):
         data = numpy.load(file_name)
     except:
         raise Exception('Cannot find file or read data')
-    else:
-        print("\033[1;30m",file_name,"loaded succesfully\n")
         
     Volume = 0.0   #  Initializing the volume to zero
  
@@ -48,8 +45,6 @@ def is_manifold(file_name):
         data = numpy.load(file_name)
     except:
         raise Exception('Cannot find file or read data')
-    else:
-        print("\n\033[1;30m",file_name, "loaded succesfully \n")
         
     edge_dict = dict()
     # Loop over each triangle 
@@ -94,15 +89,27 @@ def order(vertex_list):
 
 """ Main function """
 def main():
-    # Reading the input array file
-    file_name = input("Enter the numpy array file name including the path: ")
+    while True:
+        # Reading the input array file
+        file_name = input("\nEnter the numpy array file name including the path: ")
        
-    # Function call 
-    imf = is_manifold(file_name)
-    if imf==False:
-        print("\033[1;31mWarning: Geometry object is non-manifold\033[1;m \n")    
-    Volume = calculate_triangular_mesh_volume(file_name)
-    print("\033[1;30mVolume of the mesh =\033[1;m", Volume,"\n")
+        # Function call 
+        imf = is_manifold(file_name)
+        if imf==False:
+            print("\033[1;31mWarning: Geometry object is non-manifold\033[1;m")    
+        Volume = calculate_triangular_mesh_volume(file_name)
+        print("\033[1;30mVolume of the mesh =\033[1;m", Volume)
+ 
+        another_volume = input("\nDo you want to calculate volume for another polyhedron. Press y or n: ")
 
+        if another_volume=="y":
+            continue
+        elif another_volume=="n":
+            print("\nExiting the function\n")
+            break
+        else:
+            print("\n\033[1;31mWarning: Invalid selection\033[1;m")
+            break
+       
 if __name__ == '__main__':
     main()

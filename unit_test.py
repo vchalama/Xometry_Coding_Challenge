@@ -25,28 +25,28 @@ class volume_test_case(unittest.TestCase):
     def test_01_unit_cube_volume(self):
         file_name  = "mesh_volume/unit_cube_qppp.npy"
         self.assertAlmostEqual(calculate_triangular_mesh_volume(file_name),1.0,places=9,msg='Volumes not equal')
-        print("Test passed: Volume verified for",file_name,"\n")
+        print("\nTest passed: volume is verified for",file_name)
 
     def test_02_shell_volume(self):
         file_name  = "mesh_volume/shell.npy"
         self.assertAlmostEqual(calculate_triangular_mesh_volume(file_name),3.6586764273115655,places=9,msg='Volumes not equal')
-        print("Test passed: Volume verified for",file_name,"\n")
+        print("\nTest passed: volume is verified for",file_name)
 
     def test_03_robot_volume(self):
         file_name  = "mesh_volume/Robot_Maker_Faire_65pc.npy"
         self.assertAlmostEqual(calculate_triangular_mesh_volume(file_name),43677.42582662092,places=9,msg='Volumes not equal')
-        print("Test passed: Volume verified for",file_name,"\n")
+        print("\nTest passed: volume is verified for",file_name)
 
     def test_04_manifold(self):
-        test_if_manifold=input("Do you want to perform a manifold test on your geometry.Press y or n:")
+        test_if_manifold=input("\nDo you want to perform a manifold test on your geometry.Press y or n: ")
         if test_if_manifold=="y":
-            file_name  = input("Enter the numpy array file name including the path: ")
+            file_name  = input("\nEnter the numpy array file name including the path: ")
             self.assertTrue(is_manifold(file_name), msg='Geometry is non-manifold')
-            print("Test passed:",file_name," is manifold\n")	   
+            print("\nTest passed:",file_name," is manifold")	   
         elif test_if_manifold=="n":
-            print("Unit test completed")
+            print("\nUnit test completed")
         else:
-            print("\033[0;31mNot a valid response")
+            print("\n\033[1;31mWarning: Invalid selection\033[1;m")
   
             
 if __name__ == '__main__':
